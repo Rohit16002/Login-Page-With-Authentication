@@ -50,13 +50,13 @@ const Home = () => {
                       <span>3</span> 
                     </td>
                     <td>
-                      <span>rohit</span> 
+                      <span>sam</span> 
                     </td>
                     <td>
                       <span>2024-12-31</span> 
                     </td>
                     <td>
-                      <span>rohit@google.com</span> 
+                      <span>sam@matoshri.edu.in</span> 
                     </td>
                   </tr>
 
