@@ -1,6 +1,24 @@
 import React from 'react'
+import {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
+    const navigate = useNavigate();
+    const [input,setInput] = useState({
+        name:"",
+        email:"",
+        password: "",
+    });
+
+    // to store value local-storage
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        localStorage.setItem("user",JSON.stringify(input));
+        navigate("/login")
+    }
+
     return (
         <>
             <div class="main"></div>
@@ -12,24 +30,46 @@ const Register = () => {
                                 <h5 class="card-title">Register</h5>
                             </div>
                             <div class="card-body">
-                                <form action="">
-                                    <div class="form-group">
+                                <form onSubmit={handleSubmit}>
+                                    <div class="form-group mt-2">
                                         <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name" />
+                                        <input
+                                        name="name"
+                                        value={input.name}
+                                        onChange={(e) => setInput({...input,[e.target.name] : e.target.value,})}
+                                         type="text" class="form-control" id="name" />
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="date">Date</label>
-                                        <input type="date" class="form-control" id="date" />
+                                        <input 
+                                        name="date"
+                                        value={input.date}
+                                        onChange={(e) => setInput({...input,[e.target.name] : e.target.value,})}
+                                        
+                                        type="date" class="form-control" id="date" />
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="email">Email</label>
-                                        <input type="email" class="form-control" id="email" />
+                                        <input 
+                                        name="email"
+                                        value={input.email}
+                                        onChange={(e) => setInput({...input,[e.target.name] : e.target.value,})}
+                                        type="email" class="form-control" id="email" />
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group mt-2">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" />
+                                        <input 
+                                        name="password"
+                                        value={input.password}
+                                        onChange={(e) => setInput({...input,[e.target.name] : e.target.value,})}
+                                        type="password" class="form-control" id="password" />
                                     </div>
-                                    <button class="btn btn-outline-success form-control mt-3">Register</button>
+                                    <button 
+                                    
+                                    class="btn btn-outline-success form-control mt-3">Register</button>
+                                    <div class="mt-2" >
+                                    <Link to='/login' >Have already an account? <b>Login Here</b></Link>
+                                    </div>
                                 </form>
                             </div>
                         </div>
